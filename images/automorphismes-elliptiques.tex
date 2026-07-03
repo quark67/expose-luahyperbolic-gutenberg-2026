@@ -1,0 +1,21 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\begin{document}
+\begin{luacode*}
+local O = complex(0.3,0.3)
+local r = hyper.rotation(O,math.pi/3)
+local points = {0, -.8, complex.J/2, -complex.I/2, complex(-.5,-.3), complex(.7,.3)}
+hyper.tikzBegin()
+for _,P in ipairs(points) do
+	local rP = r(P)
+	hyper.drawCircleThrough(O,P, "gray!10")
+	hyper.drawArc(O,P,rP,"->, red, thick")
+	hyper.drawPolyline(P,O,rP, "red!10")
+	hyper.drawPoint(P)
+end
+hyper.drawPoint(O,"black")
+hyper.tikzEnd()
+\end{luacode*}
+\end{document}

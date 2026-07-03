@@ -1,0 +1,31 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\begin{document}
+\begin{luacode*}
+local A = complex(0,0)
+local N=6
+
+for i=1,10 do
+	local phi = hyper.automorphism(A,0)
+	hyper.tikzBegin()
+	style1 = "dotted, red!50"
+	style2 =  "thick, red"
+	for k=1,N do
+		local P = complex.polar(k/N, k*math.pi/N)
+		local Q = phi(P)
+		hyper.drawLine(0,P,style1)
+		hyper.drawLine(-A,Q,style2)
+		if k < N then
+			hyper.drawCircleThrough(0,P, style1)
+			hyper.drawCircleThrough(-A,Q,style2)
+		end
+	end
+	hyper.tikzEnd()
+	
+	A = A+complex(.05,.05)
+end
+
+\end{luacode*}
+\end{document}

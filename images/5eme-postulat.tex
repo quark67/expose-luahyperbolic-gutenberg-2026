@@ -1,0 +1,24 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage[dvipsnames]{xcolor}
+\begin{document}
+\begin{luacode*}
+local P = complex (0.5 , -0.2)
+local A = complex.exp_i ( math .pi /20)
+local style = " very thick , dashed , red"
+
+for k=1,5 do 
+	hyper.tikzBegin()
+	for l=1,k do
+		local options = "teal"
+		if l==k then options = options .. ", very thick" end
+		hyper.drawLine (P, A^l, options)
+	end
+	hyper.drawLine ( complex.J,- complex.I, style )
+	hyper.labelPoint (P, "$P$", "left =.2 cm")
+	hyper.drawPoint(P)
+	hyper.tikzEnd()
+end
+
+\end{luacode*}
+\end{document}

@@ -1,3 +1,8 @@
 .DS_Store
 _*
 **/_*
+
+*.aux
+*.log
+*.out
+*.listing

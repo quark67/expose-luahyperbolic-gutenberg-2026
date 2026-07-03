@@ -1,0 +1,50 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\begin{document}
+\begin{luacode*}
+local p = complex.exp_i(math.pi/4)/2
+local points={}
+local vectors={}
+local N = 10
+for k=1,N do
+	vectors[k] = complex.exp_i(2*k*math.pi/N)
+	points[k] = hyper.expMap(p)(vectors[k])
+end
+-- image 1 : centre et vecteurs
+hyper.tikzBegin()
+for k=1,N do
+	hyper.drawVector(p,vectors[k])
+end
+hyper.drawPoint(p)
+hyper.tikzEnd()
+-- image 2 : points à distance 1
+hyper.tikzBegin()
+for k=1,N do
+	hyper.drawSegment(p,points[k])
+	hyper.drawPoint(points[k])
+end
+hyper.drawPoint(p)
+hyper.tikzEnd()
+-- image 2 : points à distance 1 avec cercle
+hyper.tikzBegin()
+hyper.drawCircle(p,1,"dashed, red")
+for k=1,N do
+	hyper.drawSegment(p,points[k])
+	hyper.drawPoint(points[k])
+end
+hyper.drawPoint(p)
+hyper.tikzEnd()
+
+-- cercle uniquement
+
+hyper.tikzBegin()
+hyper.drawCircle(p,1,"dashed, red")
+hyper.drawPoint(p)
+hyper.labelPoint(p,"$\\Omega$", "below")
+hyper.labelPoint(points[7], "$\\mathscr  C(\\Omega, 1)$", "red, below")
+hyper.tikzEnd()
+
+\end{luacode*}
+\end{document}

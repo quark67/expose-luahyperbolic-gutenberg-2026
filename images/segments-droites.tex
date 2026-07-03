@@ -1,0 +1,57 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage[dvipsnames]{xcolor}
+\begin{document}
+\begin{luacode*}
+local O = complex.ZERO
+local A = -complex.I/2
+local B = (3+ complex.I)/5
+local C = complex( -0.8 ,0.4)
+local D = complex( -0.7 , -0.3)
+local E = -0.2+0.7*complex.I
+
+hyper.tikzBegin()
+hyper.drawPoints(O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawPoints(O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawPoints(A,B,O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawSegment (A, B, "thick, red")
+hyper.drawPoints(A,B,O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawSegment (A, B, "thick, red")
+hyper.drawPoints(A,B,C,D,O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawSegment (A, B, "thick, red")
+hyper.drawSegment (C,D, "thick, blue")
+hyper.drawPoints(A,B,C,D,O,E)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine (A, B)
+hyper.drawLine (C,D)
+hyper.drawLine (O,E)
+hyper.drawSegment (A, B, "thick, red")
+hyper.drawSegment (C,D, "thick, blue")
+hyper.drawSegment (O,E, "thick, ForestGreen")
+hyper.drawPoints(A,B,C,D,O,E)
+hyper.tikzEnd()
+
+\end{luacode*}
+\end{document}

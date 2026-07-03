@@ -1,0 +1,23 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\begin{document}
+\begin{luacode*}
+local points = {0, -.8, complex.J/2, -complex.I/2, complex(-.5,-.3), complex(.7,.3)}
+local nbIterations = 10
+local A = complex(0.05,0.05)
+local phi = hyper.automorphism(A,0)
+local X, Y = hyper.endpoints(A,0)
+hyper.tikzBegin()
+hyper.drawLine(A,0,"red!50")
+for _,P in ipairs(points) do
+	hyper.drawHypercycleThrough(P,X,Y,"gray")
+	hyper.drawPointOrbit(P, phi, nbIterations) 
+end
+hyper.drawPoint(A,"red")
+hyper.labelPoint(A,"$A$", "above left, red")
+hyper.drawPointOrbit(A, phi, nbIterations, "red") 
+hyper.tikzEnd()
+\end{luacode*}
+\end{document}

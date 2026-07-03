@@ -1,0 +1,31 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\begin{document}
+\begin{luacode*}
+local speed = 1/2
+local vect = complex.exp_i ( math.pi /4) * speed
+local N = 6
+local function printShade()
+	hyper.tikzPrintf("\\shade[inner color = white, outer color=teal!40!white] (0,0) circle (1);")
+end
+local myPointStyle = "white , draw =red"
+local startPoints={complex (0,0),complex (0,-0.5)}
+for _,startPoint in ipairs(startPoints) do
+	local points = {startPoint}
+	for k=1,N do
+		points[#points+1] = hyper.expMap (startPoint)(k* vect )
+		hyper.tikzBegin ()
+		printShade()
+		 hyper.drawVector(
+			points[k],
+			complex.unit(hyper.tangentVector(points[k],points[k+1]))*speed
+		)
+		for j=1, k do
+			hyper.drawPoint(points[j], myPointStyle)
+		end
+		hyper.tikzEnd ()
+	end
+end
+
+\end{luacode*}
+\end{document}

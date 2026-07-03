@@ -1,0 +1,46 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\begin{document}
+\begin{luacode*}
+local P = complex(0.8,0.2)
+local Q = complex(-0.3,0.5)
+
+
+
+hyper.tikzBegin()
+local M = complex(0.3,-0.6)
+local Mp = (hyper.reflection(P,Q))(M)
+hyper.drawPoint(Mp,"red")
+hyper.drawSegment(M,Mp,"dashed,red")
+hyper.labelPoint(Mp,"$M'$", "left, red")
+local X = hyper.interLL(P,Q, M, Mp)
+local mark="\\textcolor{red}{||}"
+hyper.labelPoints(P, "$P$", Q, "$Q$", M, "$M$", "below")
+hyper.markSegments(M, X, X, Mp, mark)
+hyper.drawRightAngle(M, X, P, "red")
+
+hyper.drawLine(P,Q, "thick, teal")
+hyper.drawPoints(P,Q, M)
+hyper.tikzEnd()
+
+-- -----------------------
+-- DEUXI7ME IMAGE : reflexion d'un triangle
+hyper.tikzBegin()
+local A=complex(.4,-.2)
+local B = -2*complex.I/3
+local C = complex(-.7,-0.2)
+
+local Ap = (hyper.reflection(P,Q))(A)
+local Bp = (hyper.reflection(P,Q))(B)
+local Cp = (hyper.reflection(P,Q))(C)
+
+hyper.drawTriangle(A,B,C)
+hyper.drawTriangle(Ap,Bp,Cp, "red")
+
+hyper.drawLine(P,Q, "thick, teal")
+hyper.drawPoints(P,Q)
+hyper.tikzEnd()
+\end{luacode*}
+\end{document}

@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{tikz}
+\usepackage[
+  paperwidth=182mm,
+  paperheight=102mm,
+  margin=10mm
+]{geometry}
+\usepackage{../luahyperbolic} %loads luacode package
+\pagestyle{empty}
+\begin{document}
+\hyperbolicTiling{3}{4}{5}[scale=1.8, depth=6, color=teal]
+\hyperbolicTiling{2}{3}{7}[scale=1.8, depth=13, color=gray]
+\hyperbolicTiling{2}{5}{9}[scale=1.8, depth=7, color=pink]
+\hyperbolicTiling{4}{4}{4}[scale=1.8, depth=5, color=blue]
+
+\vspace{.5cm}
+\hyperbolicTiling{2}{5}{inf}[scale=1.8, depth=6, color=brown]
+\hyperbolicTiling{2}{inf}{inf}[scale=1.8, depth=6, color=olive]
+\hyperbolicTiling{3}{inf}{inf}[scale=1.8, depth=6, color=orange]
+\hyperbolicTiling{inf}{inf}{inf}[scale=1.8, depth=5, color=violet]
+
+\end{document}

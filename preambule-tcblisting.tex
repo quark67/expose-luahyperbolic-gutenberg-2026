@@ -1,0 +1,53 @@
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listings}
+\tcbuselibrary{skins,breakable}
+\usepackage{fancyvrb}
+
+\hbadness=10000
+\hfuzz=3pt
+
+
+\lstdefinelanguage{Lua}{
+  morekeywords={and,break,do,else,elseif,end,false,for,function,if,in,
+    local,nil,not,or,repeat,return,then,true,until,while},
+  sensitive=true,
+  morecomment=[l]{--},
+  morestring=[b]",
+  morestring=[b]'
+}
+
+\tcbset{
+  myluacolors/.style={
+    listing options={
+      language=Lua,
+      tabsize=2,
+      basicstyle=\ttfamily\small,
+      keywordstyle=\color{blue!60!black}\bfseries,
+      commentstyle=\color{gray}\itshape,
+      stringstyle=\color{red!50!black},
+      emph={hyper},
+      emphstyle={\color{green!40!black}\bfseries},
+      showstringspaces=false,
+      breaklines=true,
+      postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+    }
+  }
+}
+
+
+\newtcblisting{codeandresult}{%
+myluacolors,
+colback=white,
+boxrule=0pt,
+colframe=white,
+frame hidden,
+listing side text,
+lefthand width=0.64\linewidth,
+righthand width=0.36\linewidth,
+boxsep=0pt,
+left=0pt,
+right=0pt,
+top=0pt,
+bottom=0pt,
+}

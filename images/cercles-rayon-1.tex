@@ -1,0 +1,22 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage{mathtools}
+\usepackage{unicode-math}
+\usepackage[dvipsnames]{xcolor}
+\begin{document}
+\begin{luacode*}
+local A = complex(0,0)
+local B = complex(-0.5,-0.4)
+local C = complex(0.8,0.1)
+local D = .8*complex.I
+local E = complex.polar(.6,math.rad(130))
+
+hyper.tikzBegin()
+hyper.drawCircle(A,1) -- default : black
+hyper.drawCircle(B,1,"dashed, blue")
+hyper.drawCircle(C,1,"thick, red, fill=red!20")
+hyper.fillCircle(D, 1) -- default : gray
+hyper.fillCircle(E, 1,"ForestGreen!20")
+hyper.tikzEnd()
+\end{luacode*}
+\end{document}

@@ -1,0 +1,132 @@
+\documentclass[margin=.2cm,multi,tikz]{standalone}
+\usepackage{../luahyperbolic} %loads luacode package
+\usepackage[dvipsnames]{xcolor}
+\begin{document}
+\begin{luacode*}
+local A = (1+2*complex.I)/3
+local B = -.5+.3*complex.I
+local C = .3-.4*complex.I
+style="teal"
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawPoints(A,B,C)
+hyper.tikzEnd()
+
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawTriangle(A,B,C,"very thick, "..style)
+hyper.drawPoints(A,B,C)
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawTriangle(A,B,C,"very thick, "..style)
+hyper.drawPoints(A,B,C)
+
+hyper.labelPoint(A, "$A$", "above left, red")
+hyper.labelPoint(B, "$B$", "below left, blue")
+hyper.labelPoint(C, "$C$", "above right, ForestGreen")
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawTriangle(A,B,C,"very thick, "..style)
+hyper.drawPoints(A,B,C)
+
+hyper.labelPoint(A, "$A$", "above left, red")
+hyper.labelPoint(B, "$B$", "below left, blue")
+hyper.labelPoint(C, "$C$", "above right, ForestGreen")
+
+
+hyper.drawAngle(B,A,C, "very thick, red")
+hyper.drawAngle(C,B,A, "very thick, double, double distance=2pt, blue")
+hyper.drawAngle(A,C,B, "very thick, dotted, ForestGreen")
+hyper.tikzEnd()
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawTriangle(A,B,C,"very thick, "..style)
+hyper.drawPoints(A,B,C)
+
+hyper.labelPoint(A, "$A$", "above left, red")
+hyper.labelPoint(B, "$B$", "below left, blue")
+hyper.labelPoint(C, "$C$", "above right, ForestGreen")
+
+hyper.drawAngle(B,A,C, "very thick, red")
+hyper.drawAngle(C,B,A, "very thick, double, double distance=2pt, blue")
+hyper.drawAngle(A,C,B, "very thick, dotted, ForestGreen")
+
+hyper.tikzPrintf("\\draw (-.3,-.5) node{??};")
+hyper.tikzEnd()
+
+
+for i=1,5 do
+	A = A + complex(0.02,0.02)
+	B = B + complex(-0.03,0.01)
+	C = C + complex(0.05,-0.05)
+	hyper.tikzBegin()
+	hyper.drawLine(A,B, style)
+	hyper.drawLine(B,C, style)
+	hyper.drawLine(C,A, style)
+	hyper.drawTriangle(A,B,C,"very thick, "..style)
+	hyper.drawPoints(A,B,C)
+	
+	hyper.labelPoint(A, "$A$", "above left, red")
+	hyper.labelPoint(B, "$B$", "below left, blue")
+	hyper.labelPoint(C, "$C$", "above right, ForestGreen")
+	
+	hyper.drawAngle(B,A,C, "very thick, red")
+	hyper.drawAngle(C,B,A, "very thick, double, double distance=2pt, blue")
+	hyper.drawAngle(A,C,B, "very thick, dotted, ForestGreen")
+	hyper.tikzEnd()
+end
+
+hyper.tikzBegin()
+hyper.drawLine(A,B, style)
+hyper.drawLine(B,C, style)
+hyper.drawLine(C,A, style)
+hyper.drawTriangle(A,B,C,"very thick, "..style)
+hyper.drawPoints(A,B,C)
+
+hyper.labelPoint(A, "$A$", "above left, red")
+hyper.labelPoint(B, "$B$", "below left, blue")
+hyper.labelPoint(C, "$C$", "above right, ForestGreen")
+
+hyper.drawAngle(B,A,C, "very thick, red")
+hyper.drawAngle(C,B,A, "very thick, double, double distance=2pt, blue")
+hyper.drawAngle(A,C,B, "very thick, dotted, ForestGreen")
+
+hyper.tikzPrintf("\\draw (-.2,-.5) node{$\\hat A + \\hat B + \\hat C < 180^\\circ$ !};")
+hyper.tikzEnd()
+
+
+
+\end{luacode*}
+\end{document}
