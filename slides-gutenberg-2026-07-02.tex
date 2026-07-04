@@ -106,7 +106,7 @@
 %
 %Quel est le modèle de Poincaré ? Pas l'explication initiale, mais celle avec de la colle.
 %
-%DIsque avec de la colle.
+%Disque avec de la colle.
 %
 %Point au centre, on avance \og tt droit\fg, dessiner les étapes 1, 2, 3, 4, 5 successivement.
 %
@@ -129,7 +129,7 @@
 %
 %Exemples de distances, formule en radial.
 %
-%DIstance 1m à partir d'un point,dans plusieurs directions. Cercles de rayon r centré en un point.
+%Distance 1m à partir d'un point,dans plusieurs directions. Cercles de rayon r centré en un point.
 %
 %Géodésiques se croisent ou pas. Notion de parallèle. ATTENTION 5ème postulat est faux ici !!! screenshot Elements d'euclide.
 %
@@ -141,7 +141,7 @@
 %
 %ATTENTION somme des angles !! Cercle circonscrit etc.
 %
-%Voir pdfs d'itroduction à la géométrie hyperbolique.
+%Voir pdfs d'introduction à la géométrie hyperbolique.
 %
 %\newpage
 %
@@ -159,7 +159,7 @@
 
 \includepdf[pages=-]{images/segments-droites.pdf}
 
-\titre{Attention !!\\ Le 5ème postulat d'Euclide\\tombe en défaut!}
+\titre{Attention !!\\ Le 5\ieme{} postulat d'Euclide\\tombe en défaut!}
 
 \includepdf[pages=-]{images/5eme-postulat.pdf}
 
@@ -217,11 +217,11 @@ Preambule minimal:
 \usepackage{unicode-math}  % charge fontspec
 \end{verbatim}
 
-Avantage immédiat (?) de la compilation avec LuaLaTeX choix de n'importe quelle police:
+Avantage immédiat (?) de la compilation avec LuaLaTeX choix de n'importe quelle police :
 
 \begin{verbatim}
 \setmainfont{Comic Sans MS}
-Quelle indignité...
+Quelle indignité\ldots
 \setmainfont{Papyrus}
 Je vous demande de vous arrêter !
 \end{verbatim}
@@ -234,7 +234,7 @@ Pour plus d'informations sur les polices disponibles, voir les documents récent
 
 
 
-\titre{Lua, un langage minimaliste\\  (Mais efficace!)}
+\titre{Lua, un langage minimaliste\\  (Mais efficace !)}
 
 \newpage
 
@@ -246,7 +246,7 @@ Pour plus d'informations sur les polices disponibles, voir les documents récent
 \item Syntaxe très proche de Python (avec des \texttt{end} pour fermer les blocs)
 \item site web : \url{lua.org}
 \item Manuel : \url{https://www.lua.org/manual/}
-\item Livre : \emph{Programming in Lua} (5ème édition, 1ère édition gratuite sur \url{https://www.lua.org/pil/contents.html}
+\item Livre : \emph{Programming in Lua} (5\ieme{} édition, 1\iere{} édition gratuite sur \url{https://www.lua.org/pil/contents.html}
 \item Notes de cours : \url{https://ic.ufrj.br/~fabiom/lua/}
 \item Utilisé dans un nombre croissant de packages latex, par exemple l'excellent \texttt{tkz-euclide}, pour augmenter la rapidité et la précision des calculs.
 \end{itemize}
@@ -256,21 +256,21 @@ Pour plus d'informations sur les polices disponibles, voir les documents récent
 \titre{Utilisation de Lua\\dans un document LaTeX}
 %\setmathfont{Fira Math}
 \begin{codeandresult}
-La factorielle de $5$ vaut
+La factorielle de 5 vaut
 \directlua{
 	local result = 1
 	for k=1,5 do result = result * k end
 	tex.sprint(result)}.\par
-La double factorielle de $5$,
-notée $5!!$, est égale à 
+La double factorielle de 5,
+notée 5\!!\!!, est égale à 
 \directlua{local n, result = 5, 1
 	while n>0 do
 		result = result * n
 		n = n-2
 	end
 	tex.sprint(result)}.\par
-La puissance de $2$ immédiatement
-(strict°) supérieure à $100$ est 
+La puissance de 2 immédiatement
+(strict°) supérieure à 100 est 
 \directlua{local n=1
 	while n <= 100 do n = n * 2 end
 	tex.sprint(n)}.
@@ -284,7 +284,7 @@ La puissance de $2$ immédiatement
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\titre{Partie III\\ Quelques fonctionnalités\\du package `luahyperbolic'}
+\titre{Partie III\\ Quelques fonctionnalités\\du package \og luahyperbolic \fg}
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -296,10 +296,10 @@ La puissance de $2$ immédiatement
 
 \begin{itemize}
 \item Page CTAN : \url{https://ctan.org/pkg/luahyperbolic}
-\item Repo github : \url{https://github.com/dmegy/luahyperbolic}
+\item Repo GitHub : \url{https://github.com/dmegy/luahyperbolic}
 \end{itemize}
 
-Attention, la version sur github est la plus à jour si l'on désire tester de nouvelles fonctionnalités.
+Attention, la version sur GitHub est la plus à jour si l'on désire tester de nouvelles fonctionnalités.
 
 \begin{center}
 \begin{luacode*}
@@ -572,7 +572,7 @@ end
 
 \titre{Aperçu des fonctions disponibles}
 
-\paragraph{Module `complex'} (petite lib de nombres complexes)
+\paragraph{Module \og complex \fg} (petite lib de nombres complexes)
 \ttfamily
 \begin{multicols}{5}
 \noindent\directlua{print_module_type(complex, "function", "\\\\")}
